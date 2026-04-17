@@ -5,7 +5,7 @@ type Product = {
   id?: string | number
   name?: string
   description?: string
-  price?: number
+  price?: number | string
   image?: string
 }
 
@@ -107,8 +107,8 @@ export default function ProductList() {
           <div className="product-body">
             <h3 className="product-name">{p.name}</h3>
             {p.description && <p className="product-desc">{p.description}</p>}
-            {typeof p.price === 'number' && (
-              <div className="product-price">${p.price.toFixed(2)}</div>
+            {p.price !== undefined && p.price !== null && p.price !== '' && !isNaN(Number(p.price)) && (
+              <div className="product-price">${Number(p.price).toFixed(2)}</div>
             )}
           </div>
             </div>
